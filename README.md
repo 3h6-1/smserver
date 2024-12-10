@@ -7,7 +7,8 @@
 
 **SMServer is an iPhone app, written in SwiftUI, which allows for one to send and receive text messages (and iMessages) from their Web browser**
 
-> **NOTE:** SMServer is not currently under any active development. For the forseeable future, I will not be working on any improvements, new features, or bug fixes. If anyone would like to contribute (either by taking over development or submitting PRs), I will still be happy to help you along, and am happy to answer questions about this project (submitted through an issue, an email, etc), but won't be writing any code myself.
+> [!IMPORTANT]
+> SMServer is not currently under any active development. For the forseeable future, I will not be working on any improvements, new features, or bug fixes. If anyone would like to contribute (either by taking over development or submitting PRs), I will still be happy to help you along, and am happy to answer questions about this project (submitted through an issue, an email, etc), but won't be writing any code myself.
 
 ## Features
 - Viewing all texts & iMessages from another device
@@ -47,7 +48,7 @@ The source code may be updated past the latest released version, so don't be sur
 6. (Optional) Customize the defaults under the settings section of the app to better fit your needs
 
 ## Issues
-If there are any issues, questions, or feature requests at all, don't hesitate to create an issue or pull request here, or email me at contact@ianwelker.com. I will not run into all issues that could possibly come up, so I would really appreciate any issues you let me know about.
+If there are any issues, questions, or feature requests at all, don't hesitate to create an issue or pull request here. I will not run into all issues that could possibly come up, so I would really appreciate any issues you let me know about.
 
 ### To file an issue:
 Please include the following information:
@@ -65,7 +66,7 @@ Also, if the app did not crash on startup, but rather crashed after it was alrea
  - Enable debug in the app's settings
  - Start the app and let it reach the error point
  - Manually copy the output from the above command (as much as you can get) into a text file.
- - Email me the file at contact@ianwelker.com. This file may have sensitive information, such as contact phone numbers, so it wouldn't be smart to upload it to a public site. Feel free to filter out (with something like regex or by hand) the sensitive information.
+ - Filter out sensitive information and paste it here.
 
 ## Companion App
 There is a [terminal-based app](http://github.com/iandwelker/smcurser) which I would highly recommend one use in conjunction with this app. It is significantly faster than the web interface, much easier to navigate, more easily customizable, is the only client to support pure-websocket/remote connections, and authenticates for you. You can get it at the link above; it has all the information necessary to get it up and running. As always, just ask or open an issue if you have a question.
