@@ -17,6 +17,17 @@
 %end
 ```
 
+On iOS 16 and newer, this changed to:
+```objectivec
+%hook IMDaemonController
+
+- (unsigned long long)processCapabilities {
+    return 4485895;
+}
+
+%end
+```
+
 &nbsp;&nbsp;&nbsp;&nbsp; This allows every process on the phone to use IMCore & ChatKit methods. You can also check the process that's calling that to conditionally return `17159` or `%orig`, e.g. in libsmserver I use:
 
 ```objectivec
@@ -265,7 +276,19 @@ IMChat* imchat = [[%c(IMChatRegistry) sharedInstance] existingChatWithChatIdenti
 /// mark it as read!
 [imchat markAllMessagesAsRead];
 ```
-&nbsp;&nbsp;&nbsp;&nbsp; That's all it is :&#12;) This method also automatically handles sending read receipts for you (if you have them turned on; obviously it doesn't send them if you have them turned off for this conversation), so you don't have to worry about manually doing that.
+
+You can also mark a single message as read, though you have to load the messages in the IMChat object first like this (otherwise messageForGUID returns nil sometimes):
+
+```objectivec
+for (int x = 0; x < 4 && !msg; x++) {
+	[imchat loadMessagesUpToGUID:full_guid date:nil limit:0 loadImmediately:YES];
+	for (int i = 0; i < 500 && !msg; i++)
+		msg = [imchat messageForGUID:full_guid];
+}
+[imchat markMessageAsRead:msg];
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp; That's all it is :&#12;) Though you should note that marking the latest message as read this way marks all older messages in the conversation read as well. This method also automatically handles sending read receipts for you (if you have them turned on; obviously it doesn't send them if you have them turned off for this conversation), so you don't have to worry about manually doing that.
 
 ## Thanks for reading :&#12;)
 &nbsp;&nbsp;&nbsp;&nbsp; I would appreciate anything that anyone could add to this document. I'd love to compile as much information about these frameworks as I can.
